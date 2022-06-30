@@ -239,7 +239,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	MSG	msg = {};
 	float clearColor[] = { 0.25f, 0.75f, 0.0f, 1.0f }; //黄色
-	UINT f = 0;
+	UINT f = 0;	// ex01
 	while (true) {
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
 			TranslateMessage(&msg);
@@ -252,8 +252,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 		//ex01
 		f++;
-		clearColor[0] = sin((f%120)/60.0f* M_PI);
-		clearColor[2] = 1- clearColor[0];
+		clearColor[0] = sin(sin((f % 180) / 180.0f * M_PI)*M_PI);
+		clearColor[1] = (sin((f % 250) / 250.0f * M_PI));
+		clearColor[2] = (sin((f % 570) / 570.0f * M_PI));
 
 		// Chapter3_3_6
 		// スワップチェーンを動作
